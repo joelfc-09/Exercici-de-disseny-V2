@@ -1,5 +1,4 @@
 public class Max extends Quantifier<Integer> {
-
     @Override
     public Integer empty() {
         return Integer.MIN_VALUE;

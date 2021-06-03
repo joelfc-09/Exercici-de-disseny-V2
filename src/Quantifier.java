@@ -17,7 +17,6 @@ public abstract class Quantifier<E> extends Expression<E> implements Observer {
         expressions.remove(expr);
         expr.deleteObserver(this);
         evaluatedValue = this.evaluate();
-
     }
 
     @Override

@@ -9,5 +9,5 @@ public class Constant<E> extends Expression<E> {
     public E evaluate() {
         return value;
     }
-    
+
 }

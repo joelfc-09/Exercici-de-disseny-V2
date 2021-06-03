@@ -1,16 +1,16 @@
-public class Max extends Quantifier {
+public class Max extends Quantifier<Integer> {
 
     @Override
-    public Object empty() {
+    public Integer empty() {
         return Integer.MIN_VALUE;
     }
 
     @Override
-    public Object combine(Object op1, Object op2) {
-        if ((Integer) op1 > (Integer) op2) {
-            return (Integer) op1;
+    public Integer combine(Integer op1, Integer op2) {
+        if (op1 > op2) {
+            return op1;
         } else {
-            return (Integer) op2;
+            return op2;
         }
     }
 

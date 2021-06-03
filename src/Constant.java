@@ -1,4 +1,4 @@
-public class Constant <E> implements Expression {
+public class Constant<E> implements Expression {
     private E value;
 
     public Constant(E value) {

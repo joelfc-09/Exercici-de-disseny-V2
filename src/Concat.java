@@ -1,11 +1,12 @@
-public class Concat extends Quantifier{
+public class Concat extends Quantifier<String> {
     @Override
-    public Object empty() {
+    public String empty() {
         return "";
     }
 
     @Override
-    public Object combine(Object op1, Object op2) {
-        return (String) op1 + op2;
+    public String combine(String op1, String op2) {
+        return op1 + op2;
     }
+
 }

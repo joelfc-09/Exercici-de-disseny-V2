@@ -1,4 +1,4 @@
-public class Variable <E> implements Expression {
+public class Variable<E> implements Expression {
     private E value;
 
     public Variable(E value) {

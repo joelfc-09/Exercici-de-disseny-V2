@@ -1,12 +1,13 @@
-public class Constant<E> implements Expression {
-    private E value;
+public class Constant<E> extends Expression<E> {
+    private final E value;
 
     public Constant(E value) {
         this.value = value;
     }
 
     @Override
-    public Object evaluate() {
+    public E evaluate() {
         return value;
     }
+    
 }

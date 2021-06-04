@@ -1,4 +1,5 @@
-public class Max extends Quantifier<Integer> {
+public class Max implements Operation<Integer> {
+
     @Override
     public Integer empty() {
         return Integer.MIN_VALUE;

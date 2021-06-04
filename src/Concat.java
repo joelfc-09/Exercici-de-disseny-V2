@@ -1,4 +1,5 @@
-public class Concat extends Quantifier<String> {
+public class Concat implements Operation<String> {
+
     @Override
     public String empty() {
         return "";

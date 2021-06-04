@@ -3,10 +3,19 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public abstract class Quantifier<E> extends Expression<E> implements Observer {
+public class Quantifier<E> extends Expression<E> implements Observer {
     private final List<Expression<E>> expressions = new ArrayList<>();
+    private Operation<E> operator;
+    private E evaluatedValue;
+    
+    public Quantifier(Operation<E> operator) {
+        this.operator = operator;
+        evaluatedValue = operator.empty();
+    }
 
-    private E evaluatedValue = this.empty();
+    public void setOperator(Operation<E> operator) {
+        this.operator = operator;
+    }
 
     public void addExpression(Expression<E> expr) {
         expressions.add(expr);
@@ -22,22 +31,18 @@ public abstract class Quantifier<E> extends Expression<E> implements Observer {
     @Override
     public E evaluate() {
         if (expressions.isEmpty()) {
-            return this.empty();
+            return operator.empty();
         }
         if (expressions.size() == 1) {
             return expressions.get(0).evaluate();
         } else {
-            E toReturn = combine(expressions.get(0).evaluate(), expressions.get(1).evaluate());
+            E toReturn = operator.combine(expressions.get(0).evaluate(), expressions.get(1).evaluate());
             for (int i = 2; i < expressions.size(); i++) {
-                toReturn = combine(toReturn, expressions.get(i).evaluate());
+                toReturn = operator.combine(toReturn, expressions.get(i).evaluate());
             }
             return toReturn;
         }
     }
-
-    public abstract E empty();
-
-    public abstract E combine(E op1, E op2);
 
     public void update(Observable o, Object arg) {
         E newValue = this.evaluate();

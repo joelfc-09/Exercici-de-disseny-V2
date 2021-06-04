@@ -1,4 +1,4 @@
-public class Addition extends Quantifier<Integer> {
+public class Addition implements Operation<Integer> {
     @Override
     public Integer empty() {
         return 0;

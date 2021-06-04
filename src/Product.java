@@ -1,4 +1,4 @@
-public class Product extends Quantifier<Integer> {
+public class Product implements Operation<Integer> {
     @Override
     public Integer empty() {
         return 1;

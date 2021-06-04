@@ -35,9 +35,9 @@ public abstract class Quantifier<E> extends Expression<E> implements Observer {
         }
     }
 
-    public abstract E empty();
+    protected abstract E empty();
 
-    public abstract E combine(E op1, E op2);
+    protected abstract E combine(E op1, E op2);
 
     public void update(Observable o, Object arg) {
         E newValue = this.evaluate();

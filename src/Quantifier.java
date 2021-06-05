@@ -11,12 +11,18 @@ public abstract class Quantifier<E> extends Expression<E> implements Observer {
     public void addExpression(Expression<E> expr) {
         expressions.add(expr);
         expr.addObserver(this);
-        evaluatedValue = this.evaluate();
+        if(!evaluatedValue.equals(this.evaluate())){
+            evaluatedValue = this.evaluate();
+            notifyObservers();
+        }
     }
     public void removeExpression(Expression<E> expr) {
         expressions.remove(expr);
         expr.deleteObserver(this);
-        evaluatedValue = this.evaluate();
+        if(!evaluatedValue.equals(this.evaluate())){
+            evaluatedValue = this.evaluate();
+            notifyObservers();
+        }
     }
 
     @Override
